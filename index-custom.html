@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SBTI - แบบทดสอบบุคลิกภาพแบบสัตว์ๆ</title>
+
+    <!-- OG Meta Tags -->
+    <meta property="og:title" content="SBTI - แบบทดสอบบุคลิกภาพแบบสัตว์ๆ">
+    <meta property="og:description" content="MBTI เชยแล้ว! มาลอง SBTI กัน - แบบทดสอบบุคลิกภาพที่จะบอกว่าคุณเป็นสัตว์แบบไหน">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/og-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SBTI - แบบทดสอบบุคลิกภาพแบบสัตว์ๆ">
+    <meta name="twitter:description" content="MBTI เชยแล้ว! มาลอง SBTI กัน - แบบทดสอบบุคลิกภาพที่จะบอกว่าคุณเป็นสัตว์แบบไหน">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ==================== SCREEN 1: LANDING PAGE ==================== -->
+    <div id="screen-landing" class="screen active">
+        <div class="container">
+            <div class="landing-content">
+                <div class="logo-area">
+                    <h1 class="landing-title">SBTI</h1>
+                    <p class="landing-subtitle">แบบทดสอบบุคลิกภาพแบบสัตว์ๆ</p>
+                </div>
+
+                <div class="tagline">
+                    <span class="tagline-badge">MBTI เชยแล้ว! มาลอง SBTI กัน</span>
+                </div>
+
+                <div class="landing-intro">
+                    <p>แบบทดสอบสนุกๆ ที่จะวิเคราะห์บุคลิกภาพของคุณผ่าน 15 มิติ แล้วบอกว่าคุณเป็นสัตว์ประเภทไหน! ไม่ใช่แบบทดสอบทางวิทยาศาสตร์ แค่เล่นสนุกๆ แต่อาจจะแม่นจนน่ากลัว...</p>
+                </div>
+
+                <button id="btn-start" class="btn btn-primary btn-start">
+                    เริ่มทดสอบ
+                </button>
+
+                <div class="landing-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">31</span>
+                        <span class="stat-label">คำถาม</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">มิติ</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">นาที</span>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="landing-footer">
+                <p class="footer-credit">Inspired by <a href="https://sbti.unun.dev" target="_blank" rel="noopener">SBTI (sbti.unun.dev)</a></p>
+                <p class="footer-disclaimer">แบบทดสอบนี้จัดทำขึ้นเพื่อความบันเทิงเท่านั้น ไม่ใช่เครื่องมือวัดทางจิตวิทยา</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ==================== SCREEN 2: QUIZ PAGE ==================== -->
+    <div id="screen-quiz" class="screen">
+        <div class="container">
+            <!-- Progress Section -->
+            <div class="quiz-header">
+                <button id="btn-back" class="btn-icon btn-back" aria-label="กลับคำถามก่อนหน้า">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <div class="progress-section">
+                    <div class="progress-bar">
+                        <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <span id="progress-text" class="progress-text">1/32</span>
+                </div>
+            </div>
+
+            <!-- Question Area -->
+            <div id="question-area" class="question-area">
+                <div class="question-card">
+                    <p id="question-text" class="question-text">คำถามจะแสดงที่นี่</p>
+                </div>
+
+                <!-- Answer Options -->
+                <div id="options-container" class="options-container">
+                    <button class="option-card" data-value="a">
+                        <span class="option-text">ตัวเลือก A</span>
+                    </button>
+                    <button class="option-card" data-value="b">
+                        <span class="option-text">ตัวเลือก B</span>
+                    </button>
+                    <button class="option-card" data-value="c">
+                        <span class="option-text">ตัวเลือก C</span>
+                    </button>
+                    <button class="option-card" data-value="d">
+                        <span class="option-text">ตัวเลือก D</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SCREEN 3: LOADING/CALCULATING ==================== -->
+    <div id="screen-loading" class="screen">
+        <div class="container">
+            <div class="loading-content">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+                <h2 class="loading-title">กำลังวิเคราะห์บุคลิกภาพของคุณ...</h2>
+                <p class="loading-subtitle">รอสักครู่นะ เรากำลังคำนวณจาก 15 มิติ</p>
+                <div class="loading-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SCREEN 4: RESULTS PAGE ==================== -->
+    <div id="screen-result" class="screen">
+        <div class="container">
+            <div class="result-content">
+
+                <!-- Type Header -->
+                <div class="result-header">
+                    <div class="result-type-badge">
+                        <span id="result-match" class="match-badge">92% Match</span>
+                    </div>
+                    <div class="result-type-image" id="result-image">
+                        <span id="result-type-code-img" class="type-code-placeholder">CTRL</span>
+                    </div>
+                    <h1 id="result-type-code" class="result-type-code">CTRL</h1>
+                    <h2 id="result-type-name" class="result-type-name">นักบงการ</h2>
+                    <p id="result-type-intro" class="result-type-intro">ผู้ที่มองเห็นทุกอย่างเป็นกระดานหมากรุก</p>
+                </div>
+
+                <!-- Description -->
+                <div class="result-description-card">
+                    <h3 class="section-title">เกี่ยวกับตัวคุณ</h3>
+                    <p id="result-description" class="result-description">
+                        คำอธิบายบุคลิกภาพจะแสดงที่นี่...
+                    </p>
+                </div>
+
+                <!-- 15-Dimension Breakdown -->
+                <div class="result-dimensions-card">
+                    <h3 class="section-title">วิเคราะห์ 15 มิติ</h3>
+                    <div id="dimensions-container" class="dimensions-container">
+                        <!-- Dimension items will be injected by JS -->
+                        <!-- Example structure for one dimension: -->
+                        <div class="dimension-item">
+                            <div class="dimension-header">
+                                <span class="dimension-name">ความเป็นผู้นำ</span>
+                                <span class="dimension-level level-h">H</span>
+                            </div>
+                            <p class="dimension-explanation">คุณมีความเป็นผู้นำสูง ชอบนำทีมและตัดสินใจ</p>
+                        </div>
+                        <div class="dimension-item">
+                            <div class="dimension-header">
+                                <span class="dimension-name">ความอ่อนไหว</span>
+                                <span class="dimension-level level-m">M</span>
+                            </div>
+                            <p class="dimension-explanation">คุณมีความอ่อนไหวในระดับปานกลาง สมดุลระหว่างเหตุผลและอารมณ์</p>
+                        </div>
+                        <div class="dimension-item">
+                            <div class="dimension-header">
+                                <span class="dimension-name">ความคิดสร้างสรรค์</span>
+                                <span class="dimension-level level-l">L</span>
+                            </div>
+                            <p class="dimension-explanation">คุณเน้นความเป็นจริงมากกว่าจินตนาการ ชอบวิธีที่พิสูจน์แล้ว</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Share Section -->
+                <div class="result-share-card">
+                    <h3 class="section-title">แชร์ผลลัพธ์</h3>
+                    <div class="share-buttons">
+                        <button id="btn-share-line" class="share-btn share-line">
+                            <div class="share-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.271.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+                                </svg>
+                            </div>
+                            <span class="share-label">LINE</span>
+                        </button>
+                        <button id="btn-share-fb" class="share-btn share-facebook">
+                            <div class="share-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </div>
+                            <span class="share-label">Facebook</span>
+                        </button>
+                        <button id="btn-share-copy" class="share-btn share-copy">
+                            <div class="share-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                </svg>
+                            </div>
+                            <span class="share-label">Copy Link</span>
+                        </button>
+                        <button id="btn-share-save" class="share-btn share-save">
+                            <div class="share-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                            </div>
+                            <span class="share-label">Save Image</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Retake Button -->
+                <button id="btn-retake" class="btn btn-primary btn-retake">
+                    ทำแบบทดสอบอีกครั้ง
+                </button>
+
+                <!-- Footer -->
+                <footer class="result-footer">
+                    <p class="footer-credit">Inspired by <a href="https://sbti.unun.dev" target="_blank" rel="noopener">SBTI (sbti.unun.dev)</a></p>
+                    <p class="footer-disclaimer">แบบทดสอบนี้จัดทำขึ้นเพื่อความบันเทิงเท่านั้น ไม่ใช่เครื่องมือวัดทางจิตวิทยา</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/questions.js"></script>
+    <script src="js/types.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/share.js"></script>
+</body>
+</html>
