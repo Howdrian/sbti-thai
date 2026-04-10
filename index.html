@@ -304,6 +304,95 @@
       line-height: 1.7;
     }
 
+    .lead-wrap {
+      max-width: 720px;
+      margin: 22px auto 0;
+    }
+
+    .lead-wrap h2 {
+      font-size: clamp(28px, 4vw, 38px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .lead-wrap .sub {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .lead-form {
+      margin-top: 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .lead-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .lead-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .lead-input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font: inherit;
+      font-size: 16px;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+    }
+
+    .lead-input:focus {
+      border-color: #a9c1ae;
+      box-shadow: 0 0 0 4px rgba(108, 141, 113, 0.12);
+    }
+
+    .lead-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .lead-check input {
+      margin-top: 3px;
+      accent-color: var(--accent-strong);
+      transform: scale(1.1);
+      flex-shrink: 0;
+    }
+
+    .lead-error {
+      min-height: 22px;
+      color: #b23a3a;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .lead-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .lead-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
     .result-hero {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -728,6 +817,26 @@
       </div>
     </section>
 
+    <section id="lead" class="screen">
+      <div class="test-wrap card lead-wrap">
+        <h2>กรอกอีเมล</h2>
+
+        <form id="leadForm" class="lead-form">
+          <div class="lead-field">
+            <label class="lead-label" for="leadEmail">อีเมล</label>
+            <input id="leadEmail" class="lead-input" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required />
+          </div>
+
+          <div id="leadError" class="lead-error"></div>
+
+          <div class="lead-actions">
+            <button id="leadSubmitBtn" type="submit" class="btn-primary">ดูผลลัพธ์</button>
+          </div>
+        </form>
+
+      </div>
+    </section>
+
 
     <section id="result" class="screen">
       <div class="result-wrap card">
@@ -810,7 +919,7 @@
     const questions = [
       {
         id: 'q1', dim: 'S1',
-        text: 'กูไม่ใช่แค่คนขี้แพ้ กูยังเป็นตัวตลก เป็นปลาเค็ม ชาตินี้ไม่เคยมีแฟนสักคน ขี้ขลาดแล้วก็ดูถูกตัวเอง วัยรุ่นของกูมีแต่ฝันกลางวันครั้งแล้วครั้งเล่า ทุกวันจินตนาการว่าจะมีผู้หญิงสักคนมาเดินเล่นด้วยกัน เดินห้าง เที่ยวด้วยกัน แต่ความจริงคือเผาเงินพ่อแม่ เรียนมหาลัยห่วยๆ แล้วก็ใช้ชีวิตไปวันๆ จนต้องไปทำงาน ไม่มีความฝัน ไม่มีเป้าหมาย ไม่มีความสามารถ คนสามไม่ ทุกครั้งที่เห็นมึงล้อเรื่องคนขี้แพ้บนโลกออนไลน์ กูอยากร้องไห้ กูก็แค่หนูใต้ดิน มองผ่านรอยแยกของฝาท่อระบายน้ำ แอบดูความสวยงามบนดินที่ไม่ใช่ของกู ทุกครั้งที่เห็นพวกนี้ มันทิ่มแทงจิตใจกู มันบีบพื้นที่มีชีวิตของกูให้เล็กลงทุกที ขอร้องพี่น้องเถอะ ให้ตัวตลกอย่างพวกกูมีทางรอดบ้าง กูไม่อยากร้องไห้จนหมอนเปียกโชกกลางวันแสกๆ อีกแล้ว... อ่านจบแล้วรู้สึกยังไง?',
+        text: 'กูไม่ใช่แค่คนขี้แพ้ กูยังเป็นตัวตลก เป็นปลาเค็ม ชาตินี้ไม่เคยมีแฟนสักคน ขี้ขลาดแล้วก็ดูถูกตัวเอง วัยรุ่นของกูมีแต่ฝันกลางวันครั้งแล้วครั้งเล่า ทุกวันจินตนาการว่าจะมีผู้หญิงสักคนมาเดินเล่นด้วยกัน เดินห้าง เที่ยวด้วยกัน แต่ความจริงคือเผาเงินพ่อแม่ เรียนมหาลัยห่วยๆ แล้วก็ใช้ชีวิตไปวันๆ จนต้องไปทำงาน ไม่มีความฝัน ไม่มีเป้าหมาย ไม่มีความสามารถ คนสามไม่ ทุกครั้งที่เห็นมึงล้อเรื่องคนขี้แพ้บนโลกออนไลน์ กูอยากร้องไห้ กูก็แค่หนูใต้ดิน มองผ่านรอยแยกของฝาท่อระบายน้ำ แอบดูความสวยงามบนดินที่ไม่ใช่ของกู ทุกครั้งที่เห็นพวกนี้ มันทิ่มแทงจิตใจกู มันบีบพื้นที่มีชีวิตของกูให้เล็กลงทุกที ขอร้องพี่น้องเถอะ ให้ตัวตลกอย่างพวกกูมีทางรอดบ้าง กูไม่อยากร้องไห้จนหมอนเปียกโชกกลางวันแสกๆ อีกแล้ว...',
         options: [
           { label: 'อ่านแล้วอยากร้องไห้เลยวะ...', value: 1 },
           { label: 'อะไรของมึงวะ...', value: 2 },
@@ -1117,11 +1226,11 @@
     "intro": "นึกว่ากูรวยเหรอ?",
     "desc": "ยินดีด้วย! มึงทดสอบได้บุคลิกที่หายากที่สุดในโลก ATM-er ไม่จำเป็นต้อง \"แจกเงิน\" จริง แต่อาจจะ \"จ่าย\" ไปตลอดกาล — จ่ายเวลา จ่ายพลังงาน จ่ายความอดทน จ่ายคืนที่ควรจะสงบสุข เหมือนตู้ ATM เก่าๆ แต่แข็งแกร่ง ใส่ความกังวลและปัญหาคนอื่นเข้าไป ออกมาเป็นคำรับประกัน \"ไม่ต้องห่วง พี่จัดให้\" ชีวิตมึงคือโชว์จ่ายบิลคนเดียวอย่างยิ่งใหญ่ที่ไม่มีใครปรบมือให้ มึงใช้ความมั่นคงเหมือนหินผาแบกรับการเรียกร้องเหมือนน้ำตก บางทีดึกๆ คนเดียวถึงจะถอนหายใจให้กับบิลเหล่านั้น — อาจเป็นบิลทางจิตวิญญาณ — แล้วพึมพำว่า: ไอ้ความรับผิดชอบบ้าๆ ที่ไม่รู้จะเก็บไว้ตรงไหนนี่..."
   },
-  "KWAI-s": {
-    "code": "KWAI-s",
-    "cn": "ควายดิจิทัล",
-    "intro": "รอดูสิ ควายตัวนี้จะพลิกชีวิต",
-    "desc": "ยินดีด้วย! มึงไม่ใช่ควาย มึงคือทายาทจิตวิญญาณของ Diogenes นักปราชญ์ซินิกผู้พลัดพรากมานาน เพราะชื่อเต็มของ KWAI-s คือ Diogenes' Original Realist - sage บุคลิก KWAI-s คือการดูถูกกับดักบริโภคนิยมและ PUA สายพัฒนาตัวเองอย่างถึงที่สุด พวกเขาไม่ใช่ \"ไม่มีความทะเยอทะยาน\" แต่มองทะลุแล้วว่าทุก \"ความทะเยอทะยาน\" สุดท้ายก็แค่กรงที่หรูกว่าเดิม KWAI-s มีปัญญาใหญ่ ตอนที่คนอื่นวิ่งไล่กระแส ถูกคลื่นยุคสมัยตบจนหัวหมุน KWAI-s นอนอาบแดดอยู่ในถังไม้ทางจิตวิญญาณ บรรลุภาวะ \"คน-ถัง-เป็นหนึ่ง\" ขั้นสูงสุดเรียบร้อยแล้ว สิ่งที่พวกเขาศรัทธาไม่ใช่คำพูดลอยๆ แต่คือกฎฟิสิกส์และสัญชาตญาณทางชีวภาพที่ผ่านการพิสูจน์มาเป็นล้านๆ ครั้ง: หนึ่ง — นอนสบายกว่ายืน สอง — ถึงเวลากิน ก็ต้องกิน"
+  "DIO-s": {
+    "code": "DIO-s",
+    "cn": "นักดูถูกโลก",
+    "intro": "กูนอนชิล แต่กูเห็นโลกชัดกว่าพวกมึง",
+    "desc": "มึงไม่ใช่คนขี้แพ้ มึงคือสายพันธุ์คนที่มองทะลุเกมของโลกไปแล้ว DIO-s ไม่ได้ \"ไม่มีความทะเยอทะยาน\" แต่มองออกว่าความทะเยอทะยานหลายอย่างก็แค่กรงที่หรูขึ้นอีกหน่อย ตอนที่คนอื่นวิ่งไล่เทรนด์ ไล่ภาพลักษณ์ ไล่คำชมจากคนทั้งโลก DIO-s เอนตัวอยู่เงียบๆ แล้วถามแค่คำเดียว: แล้วไงต่อ? พวกเขาไม่ได้ขี้เกียจแบบไม่มีสมอง แต่ขี้เกียจแบบคนที่ผ่านจุดอยากพิสูจน์ตัวเองให้โลกดูไปแล้ว สัจธรรมของชีวิตสำหรับ DIO-s มีไม่กี่ข้อ: ถ้านอนได้ก็นอน ถ้าหิวก็กิน ถ้าเรื่องไหนไร้สาระก็ไม่ต้องแสดงละครร่วมกับมัน"
   },
   "BOSS": {
     "code": "BOSS",
@@ -1192,8 +1301,8 @@
   "HIA!": {
     "code": "HIA!",
     "cn": "เหี้ย!",
-    "intro": "เหี้ย! ทำไมกูได้บุคลิกนี้วะ?",
-    "desc": "เราค้นพบสิ่งมีชีวิตมหัศจรรย์ — HIA! พวกเขามีระบบปฏิบัติการอิสระสองชุด: ชุดแรกเรียก \"ระบบหน้าบ้าน\" ทำหน้าที่ส่งเสียง \"เหี้ย\" \"โคตรเจ๋ง\" \"อ้าว?\" และเสียงตกใจอื่นๆ ชุดที่สองเรียก \"ระบบหลังบ้าน\" ทำหน้าที่วิเคราะห์อย่างสงบ: อืม ก็คาดไว้แล้วแหละ HIA! จะแค่ร้อง \"เหี้ย\" ไม่ยุ่งเรื่องชาวบ้าน เพราะรู้ดีว่าสอนเหตุผลให้คนโง่ ก็เหมือนเอาโคลนไปฉาบกำแพง — เสียแรงแล้วยังเลอะมืออีก ดังนั้นพวกเขาเลือกที่จะกำหญ้าแห่งปัญญาไว้ในมือ แล้วใช้เสียง \"เหี้ย!\" ที่เปี่ยมด้วยอารมณ์ลึกซึ้ง ถวายความเคารพสูงสุดให้โลกบ้าๆ ใบนี้"
+    "intro": "เหี้ยเอ๊ย เอาอีกละ",
+    "desc": "HIA! คือคนที่ปากกับสมองทำงานคนละสปีด ปากเพิ่งหลุดว่า \"เหี้ย!\" แต่สมองได้สรุปสถานการณ์ไปสามชั้นแล้วว่าใครพลาด ตรงไหนพัง และอีกห้านาทีจะบานปลายยังไง คนแบบนี้ไม่ได้ชอบยุ่งเรื่องชาวบ้าน พวกเขาแค่ทนดูความโง่แบบสดๆ ตรงหน้าไม่ค่อยไหว เวลาอะไรพัง คนอื่นอาจแตกตื่น แต่ HIA! จะก่ายหน้าผาก ถอนหายใจแรงๆ หนึ่งที แล้วเริ่มวิเคราะห์แบบเงียบๆ ว่าจะปล่อยให้ชิบหายต่อ หรือจะลงมือแก้เท่าที่จำเป็น พวกเขาไม่ได้โลกสวย ไม่ได้สุภาพเกินเหตุ แต่แม่นเรื่องจับสัญญาณหายนะ และมีพรสวรรค์พิเศษในการพูดคำหยาบคำเดียวให้ครอบคลุมอารมณ์ทั้งเรื่อง"
   },
   "THIN-K": {
     "code": "THIN-K",
@@ -1239,9 +1348,9 @@
   },
   "FUCK": {
     "code": "FUCK",
-    "cn": "คนซ่า",
-    "intro": "เหี้ย! นี่บุคลิกอะไรวะ?",
-    "desc": "ยินดีด้วย! มึงไม่ได้อยู่ในขอบเขตมนุษย์เลย! มึงทดสอบได้บุคลิก 【FUCK】 ที่หายากล้านปีมีครั้ง ในเมืองแห่งอารยธรรมของมนุษย์ โผล่มาหญ้าป่ารูปร่างมนุษย์ต้นนึงที่ไม่มียาฆ่าหญ้าตัวไหนกำจัดได้ มีพลังชีวิตเหนือธรรมชาติ — นั่นคือบุคลิกคนซ่า ชื่อวิทยาศาสตร์: FUCK ในมุมมองของ FUCK กฎเกณฑ์ทางโลกไม่มีความหมายอะไรทั้งสิ้น สวิตช์อารมณ์ของ FUCK เป็นแบบสวิตช์กายภาพ: FUCK YEAH กับ FUCK OFF FUCK ไม่ได้แค่ไล่ตามความตื่นเต้นชั่วขณะ แต่ไล่ตามพลังชีวิตที่พุ่งชนทะลุร่างกาย ยามที่ทุกคนถูกเลี้ยงจนเชื่องเป็นสัตว์ปีกเรียบร้อย FUCK คือเสียงหอนหมาป่าตัวสุดท้ายที่ดังก้องในป่าดงดิบ"
+    "cn": "ตัวป่วน",
+    "intro": "ถ้าห้องนี้เงียบเกินไป เดี๋ยวกูก่อเรื่องเอง",
+    "desc": "FUCK คือพวกตัวป่วนที่มีชีวิตอยู่เหมือนเปิดโหมดสุดโต่งตลอดเวลา พวกเขาไม่ได้อยากเป็นเด็กดีของสังคม และก็ไม่สนใจจะทำตัวให้ใครสบายใจเกินไป ถ้าคนส่วนใหญ่ใช้ชีวิตแบบเดินตามเลน FUCK จะเป็นคนที่ขี่มอเตอร์ไซค์ตัดเข้ามาจากซอยแล้วถามว่ามีปัญหาอะไรไหม สวิตช์อารมณ์ของพวกเขามีแค่สองโหมด: FUCK YEAH กับ FUCK OFF ชอบก็คือชอบ เบื่อก็คือหาย ไม่ค่อยมีพื้นที่ตรงกลาง คนแบบนี้ทำให้วงดูมีสีสัน ทำให้เรื่องธรรมดาไม่ธรรมดา และทำให้คนรอบตัวทั้งปวดหัวทั้งติดใจในเวลาเดียวกัน พวกเขาไม่ใช่สัญลักษณ์เชิงกวี แต่คือมนุษย์พลังงานเกินที่พร้อมจะเขย่าบรรยากาศทุกครั้งที่เดินเข้ามา"
   },
   "DEAD": {
     "code": "DEAD",
@@ -1271,7 +1380,7 @@
     const TYPE_IMAGES = {
   "CTRL": "./images/types/CTRL.png",
   "ATM-er": "./images/types/ATM.png",
-  "KWAI-s": "./images/types/KWAI-s.png",
+  "DIO-s": "./images/types/DIO-s.png",
   "BOSS": "./images/types/BOSS.png",
   "THAN-K": "./images/types/THAN-K.png",
   "OH-NO": "./images/types/OH-NO.png",
@@ -1308,7 +1417,7 @@
     "pattern": "HHH-HHM-HHH-HMH-MHL"
   },
   {
-    "code": "KWAI-s",
+    "code": "DIO-s",
     "pattern": "MHM-MMH-MHM-HMH-LHL"
   },
   {
@@ -1484,12 +1593,14 @@
     const app = {
       shuffledQuestions: [],
       answers: {},
-      previewMode: false
+      previewMode: false,
+      pendingResult: null
     };
 
     const screens = {
       intro: document.getElementById('intro'),
       test: document.getElementById('test'),
+      lead: document.getElementById('lead'),
       result: document.getElementById('result')
     };
 
@@ -1498,6 +1609,14 @@
     const progressText = document.getElementById('progressText');
     const submitBtn = document.getElementById('submitBtn');
     const testHint = document.getElementById('testHint');
+    const leadForm = document.getElementById('leadForm');
+    const leadEmail = document.getElementById('leadEmail');
+    const leadError = document.getElementById('leadError');
+    const leadSubmitBtn = document.getElementById('leadSubmitBtn');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      flushQueuedLeads();
+    });
 
     function showScreen(name) {
       Object.entries(screens).forEach(([key, el]) => {
@@ -1590,6 +1709,94 @@
       testHint.textContent = complete
         ? 'ทำครบแล้ว! พร้อมส่งวิญญาณอิเล็กทรอนิกส์ไปให้หน้าผลลัพธ์พิพากษาได้เลย'
         : 'ตอบให้ครบทุกข้อก่อนนะ โลกมันวุ่นวายพอแล้ว อย่างน้อยก็ทำแบบทดสอบให้ครบ';
+    }
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function queueLead(payload) {
+      try {
+        const queue = JSON.parse(localStorage.getItem('sbtiLeadQueue') || '[]');
+        queue.push(payload);
+        localStorage.setItem('sbtiLeadQueue', JSON.stringify(queue));
+      } catch (err) {
+        console.warn('queueLead failed', err);
+      }
+    }
+
+    async function captureLead(payload) {
+      const res = await fetch('/api/capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) {
+        throw new Error('capture failed');
+      }
+      return res.json();
+    }
+
+    async function flushQueuedLeads() {
+      let queue;
+      try {
+        queue = JSON.parse(localStorage.getItem('sbtiLeadQueue') || '[]');
+      } catch (err) {
+        return;
+      }
+      if (!Array.isArray(queue) || queue.length === 0) return;
+
+      const remaining = [];
+      for (const item of queue) {
+        try {
+          await captureLead(item);
+        } catch (err) {
+          remaining.push(item);
+        }
+      }
+      localStorage.setItem('sbtiLeadQueue', JSON.stringify(remaining));
+    }
+
+    function openLeadGate() {
+      app.pendingResult = computeResult();
+      leadError.textContent = '';
+      leadEmail.value = localStorage.getItem('sbtiLeadEmail') || '';
+      leadSubmitBtn.disabled = false;
+      showScreen('lead');
+    }
+
+    async function submitLeadGate(event) {
+      event.preventDefault();
+      const email = leadEmail.value.trim().toLowerCase();
+
+      if (!isValidEmail(email)) {
+        leadError.textContent = 'ใส่อีเมลที่ถูกต้องก่อน';
+        return;
+      }
+
+      const result = app.pendingResult || computeResult();
+      const payload = {
+        email,
+        marketingOptIn: true,
+        resultCode: result.finalType.code,
+        resultName: result.finalType.cn,
+        answers: app.answers,
+        rawScores: result.rawScores,
+        levels: result.levels,
+        createdAt: new Date().toISOString()
+      };
+
+      leadError.textContent = '';
+      leadSubmitBtn.disabled = true;
+      localStorage.setItem('sbtiLeadEmail', email);
+
+      try {
+        await captureLead(payload);
+      } catch (err) {
+        queueLead(payload);
+      }
+
+      renderResult(result);
     }
 
     function sumToLevel(score) {
@@ -1700,7 +1907,8 @@
     }
 
     function renderResult() {
-      const result = computeResult();
+      const result = app.pendingResult || computeResult();
+      app.pendingResult = result;
       const type = result.finalType;
 
       document.getElementById('resultModeKicker').textContent = result.modeKicker;
@@ -1733,6 +1941,7 @@
     function startTest(preview = false) {
       app.previewMode = preview;
       app.answers = {};
+      app.pendingResult = null;
       const shuffledRegular = shuffle(questions);
       const insertIndex = Math.floor(Math.random() * shuffledRegular.length) + 1;
       app.shuffledQuestions = [
@@ -1746,7 +1955,8 @@
 
     document.getElementById('startBtn').addEventListener('click', () => startTest(false));
     document.getElementById('backIntroBtn').addEventListener('click', () => showScreen('intro'));
-    document.getElementById('submitBtn').addEventListener('click', renderResult);
+    document.getElementById('submitBtn').addEventListener('click', openLeadGate);
+    leadForm.addEventListener('submit', submitLeadGate);
     document.getElementById('restartBtn').addEventListener('click', () => startTest(false));
     document.getElementById('toTopBtn').addEventListener('click', () => showScreen('intro'));
   </script>
